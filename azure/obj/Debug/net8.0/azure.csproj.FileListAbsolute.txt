@@ -1,0 +1,14 @@
+/home/ariel/git/devops/azure/azure/bin/Debug/net8.0/azure
+/home/ariel/git/devops/azure/azure/bin/Debug/net8.0/azure.deps.json
+/home/ariel/git/devops/azure/azure/bin/Debug/net8.0/azure.runtimeconfig.json
+/home/ariel/git/devops/azure/azure/bin/Debug/net8.0/azure.dll
+/home/ariel/git/devops/azure/azure/bin/Debug/net8.0/azure.pdb
+/home/ariel/git/devops/azure/azure/obj/Debug/net8.0/azure.GeneratedMSBuildEditorConfig.editorconfig
+/home/ariel/git/devops/azure/azure/obj/Debug/net8.0/azure.AssemblyInfoInputs.cache
+/home/ariel/git/devops/azure/azure/obj/Debug/net8.0/azure.AssemblyInfo.cs
+/home/ariel/git/devops/azure/azure/obj/Debug/net8.0/azure.csproj.CoreCompileInputs.cache
+/home/ariel/git/devops/azure/azure/obj/Debug/net8.0/azure.dll
+/home/ariel/git/devops/azure/azure/obj/Debug/net8.0/refint/azure.dll
+/home/ariel/git/devops/azure/azure/obj/Debug/net8.0/azure.pdb
+/home/ariel/git/devops/azure/azure/obj/Debug/net8.0/azure.genruntimeconfig.cache
+/home/ariel/git/devops/azure/azure/obj/Debug/net8.0/ref/azure.dll
