@@ -20,12 +20,14 @@ steps:
     SonarQube: 'sonar'
     scannerMode: 'MSBuild'
     projectKey: 'hello_hello_AZAgmfdPWa754p4Pk2fq'
-    
-- powershell: |
+
+- script: |
+    #!/bin/bash
     # The Azure DevOps' SonarQube plugin automatically adds `sonar.branch.name` for us, but we don't want this to be set, since we're analyzing a pull request.
-    $sonarQubeScannerParams = $Env:SONARQUBE_SCANNER_PARAMS | ConvertFrom-Json
-    $sonarQubeScannerParams.PSObject.Properties.Remove('sonar.branch.name')
-    $Env:SONARQUBE_SCANNER_PARAMS = $sonarQubeScannerParams | ConvertTo-Json
+    echo "Original SONARQUBE_SCANNER_PARAMS: $SONARQUBE_SCANNER_PARAMS"
+    updatedParams=$(echo $SONARQUBE_SCANNER_PARAMS | jq 'del(.["sonar.branch.name"])')
+    export SONARQUBE_SCANNER_PARAMS=$(echo $updatedParams | jq -c .)
+    echo "Updated SONARQUBE_SCANNER_PARAMS: $SONARQUBE_SCANNER_PARAMS"
   displayName: 'Remove sonar.branch.name from SonarQube parameters'
 - task: DotNetCoreCLI@2
   displayName: build
