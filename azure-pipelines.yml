@@ -29,6 +29,8 @@ steps:
     export SONARQUBE_SCANNER_PARAMS=$(echo $updatedParams | jq -c .)
     echo "Updated SONARQUBE_SCANNER_PARAMS: $SONARQUBE_SCANNER_PARAMS"
   displayName: 'Remove sonar.branch.name from SonarQube parameters'
+  env:
+    SONARQUBE_SCANNER_PARAMS: $(SONARQUBE_SCANNER_PARAMS)
 - task: DotNetCoreCLI@2
   displayName: build
   inputs:
