@@ -1,31 +1,36 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
 trigger:
 - main
 
 pool: 'default'
 
 variables: 
+
   MyRunNumber: '1.0.$(Build.BuildNumber)'
   buildConfiguration: 'Release'
 
+
 steps:
-- task: SonarQubePrepare@5
+- task: SonarQubePrepare@6
   inputs:
     SonarQube: 'sonar'
     scannerMode: 'MSBuild'
     projectKey: 'hello_hello_AZAgmfdPWa754p4Pk2fq'
-    projectName: 'hello'
-    projectVersion: '$(Build.BuildNumber)'
-
-
 - task: DotNetCoreCLI@2
   displayName: build
   inputs:
     command: 'build'
     projects: '**/*.csproj'
 
-- task: SonarQubeAnalyze@5
+
+- task: SonarQubeAnalyze@6
   inputs:
     jdkversion: 'JAVA_HOME_17_X64'
+
 
 - task: DotNetCoreCLI@2
   displayName: pack
@@ -42,9 +47,7 @@ steps:
     packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
     nuGetFeedType: 'internal'
     publishVstsFeed: '3ee772fe-0f57-4164-b70b-438a74a262b1/a1c0f62b-b484-4828-8150-3e6ea1fd60e3'
-
 - script: echo $(MyRunNumber)
-
-- task: SonarQubePublish@5
+- task: SonarQubePublish@6
   inputs:
     pollingTimeoutSec: '300'
