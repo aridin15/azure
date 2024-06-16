@@ -9,12 +9,11 @@ trigger:
 pool: 'default'
 
 variables: 
-  MyRunNumber: '1.0.0-CI+$(Build.BuildNumber)'
+  MyRunNumber: '$(Build.BuildNumber)'
 
 
 steps:
-- script: echo $(MyRunNumber)
-- script: echo $(Build.BuildNumber)
+
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
@@ -24,6 +23,8 @@ steps:
     command: 'pack'
     packagesToPack: '**/*.csproj'
     versioningScheme: 'byBuildNumber'
+    versionEnvVar: 'MyRunNumber'
+    
 
 - task: DotNetCoreCLI@2
   inputs:
