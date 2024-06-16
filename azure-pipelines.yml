@@ -10,6 +10,7 @@ pool: 'default'
 
 variables: 
   MyRunNumber: '$(Build.BuildNumber)'
+  buildConfiguration: 'Release'
 
 
 steps:
@@ -17,6 +18,8 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
+    projects: '**/*.csproj'
+    arguments: '--configuration $(buildConfiguration)'
 
 - task: DotNetCoreCLI@2
   inputs:
@@ -32,8 +35,3 @@ steps:
     packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
     nuGetFeedType: 'internal'
     publishVstsFeed: '39866628-3232-4302-ba16-47429e24032e'
-
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'publish'
-    publishWebProjects: true
