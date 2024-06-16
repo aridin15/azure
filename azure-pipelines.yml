@@ -9,6 +9,7 @@ trigger:
 pool: 'default'
 
 variables: 
+
   MyRunNumber: '1.0.$(Build.BuildNumber)'
   buildConfiguration: 'Release'
 
@@ -37,3 +38,4 @@ steps:
     packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
     nuGetFeedType: 'internal'
     publishVstsFeed: '3ee772fe-0f57-4164-b70b-438a74a262b1/a1c0f62b-b484-4828-8150-3e6ea1fd60e3'
+- script: echo $(MyRunNumber)
