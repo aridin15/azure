@@ -19,7 +19,7 @@ steps:
   inputs:
     SonarQube: 'sonar'
     scannerMode: 'MSBuild'
-    projectKey: 'hello_hello_AZAgmfdPWa754p4Pk2fq'
+    projectKey: 'hello_hello_AZAhIklXWa754p4Pk2gB'
 
 
 - task: DotNetCoreCLI@2
