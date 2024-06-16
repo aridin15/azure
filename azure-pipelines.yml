@@ -8,27 +8,31 @@ trigger:
 
 pool: 'default'
 
+variables: 
+  MyRunNumber: '1.0.0-CI+$(Build.BuildNumber)'
 
 
 steps:
-  - task: DotNetCoreCLI@2
-    inputs:
-      command: 'build'
+- script: echo $(MyRunNumber)
+- script: echo $(Build.BuildNumber)
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
 
-  - task: DotNetCoreCLI@2
-    inputs:
-      command: 'pack'
-      packagesToPack: '**/*.csproj'
-      versioningScheme: 'byBuildNumber'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'pack'
+    packagesToPack: '**/*.csproj'
+    versioningScheme: 'byBuildNumber'
 
-  - task: DotNetCoreCLI@2
-    inputs:
-      command: 'push'
-      packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
-      nuGetFeedType: 'internal'
-      publishVstsFeed: '39866628-3232-4302-ba16-47429e24032e'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'push'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
+    nuGetFeedType: 'internal'
+    publishVstsFeed: '39866628-3232-4302-ba16-47429e24032e'
 
-  - task: DotNetCoreCLI@2
-    inputs:
-      command: 'publish'
-      publishWebProjects: true
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'publish'
+    publishWebProjects: true
