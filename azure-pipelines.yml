@@ -26,10 +26,10 @@ steps:
     command: 'build'
     projects: '**/*.csproj'
 
+
 - task: SonarQubeAnalyze@6
   inputs:
-    jdkversion: 'JAVA_HOME'
-
+    jdkversion: 'JAVA_HOME_17_X64'
 
 
 - task: DotNetCoreCLI@2
