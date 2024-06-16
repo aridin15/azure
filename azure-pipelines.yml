@@ -15,13 +15,21 @@ variables:
 
 
 steps:
-
+- task: SonarQubePrepare@6
+  inputs:
+    SonarQube: 'sonar'
+    scannerMode: 'MSBuild'
+    projectKey: 'hello_hello_AZAgmfdPWa754p4Pk2fq'
 - task: DotNetCoreCLI@2
   displayName: build
   inputs:
     command: 'build'
     projects: '**/*.csproj'
-    arguments: '--configuration $(buildConfiguration)'
+
+- task: SonarQubeAnalyze@6
+  inputs:
+    jdkversion: 'JAVA_HOME_17_X64'
+
 
 - task: DotNetCoreCLI@2
   displayName: pack
@@ -39,3 +47,6 @@ steps:
     nuGetFeedType: 'internal'
     publishVstsFeed: '3ee772fe-0f57-4164-b70b-438a74a262b1/a1c0f62b-b484-4828-8150-3e6ea1fd60e3'
 - script: echo $(MyRunNumber)
+- task: SonarQubePublish@6
+  inputs:
+    pollingTimeoutSec: '300'
