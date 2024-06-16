@@ -8,7 +8,7 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-- task: SonarQubePrepare@6
+- task: SonarQubePrepare@5
   inputs:
     SonarQube: 'sonar'
     scannerMode: 'MSBuild'
@@ -27,7 +27,7 @@ steps:
     command: 'build'
     projects: '**/*.csproj'
 
-- task: SonarQubeAnalyze@6
+- task: SonarQubeAnalyze@5
   inputs:
     jdkversion: 'JAVA_HOME_17_X64'
 
@@ -49,6 +49,6 @@ steps:
 
 - script: echo $(MyRunNumber)
 
-- task: SonarQubePublish@6
+- task: SonarQubePublish@5
   inputs:
     pollingTimeoutSec: '300'
