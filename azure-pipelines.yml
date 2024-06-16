@@ -1,8 +1,3 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
 - main
 
@@ -19,7 +14,12 @@ steps:
     scannerMode: 'MSBuild'
     projectKey: 'hello_hello_AZAgmfdPWa754p4Pk2fq'
     projectName: 'hello'
-    projectVersion: '$(Build.BuildNumber)'  # Added projectName and projectVersion
+    projectVersion: '$(Build.BuildNumber)'
+    extraProperties: |
+      # Additional properties that will be passed to the scanner, 
+      # Put one key=value per line, example:
+      # sonar.exclusions=**/*.bin
+      sonar.branch.name=main
 
 - task: DotNetCoreCLI@2
   displayName: build
