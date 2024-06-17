@@ -6,6 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Version>$(Version)</Version>
     <Nullable>enable</Nullable>
+    <PacageId>dev</PackageId>
   </PropertyGroup>
 
 </Project>
